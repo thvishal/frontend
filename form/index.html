@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./build/css/intlTelInput.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="mycontroller.js"></script>
+
+</head>
+<body>
+<div class="container">
+  <div class="panel" ng-controller="mycontroller">
+    <h1><center>Signup Form</center></h1>
+<form class="myform" name="myform" novalidate>
+<input type="text" placeholder="enter your name" maxlength="30" name="name" ng-model="name" ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,60}$/" required>
+<br>
+<span style="color:red" ng-show="myform.name.$dirty && myform.name.$invalid" class="ng-hide">
+ Please Enter Valid  Name.!
+</span>
+<span style="color:red" ng-if="myform.name.$error.required && myform.name.$touched && ! myform.name.$dirty && myform.name.$invalid">
+ name required
+</span>
+<br>
+
+
+<input type="email" placeholder="enter your email" name="email" ng-model="email" ng-pattern="/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/" required>
+<br>
+<span style="color:red" ng-show="myform.email.$dirty && myform.email.$invalid" class="ng-hide">
+Please Enter Valid  Email.!
+</span>
+<span style="color:red" ng-if="myform.email.$error.required && myform.email.$touched && ! myform.email.$dirty && myform.email.$invalid">
+ email required
+</span>
+<br>
+
+<input type="password" placeholder="enter your password"  ng-model="password" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^\da-zA-Z])(.{8,15})$/"  name="password" required>
+<br>
+<span style="color:red" ng-show="myform.password.$dirty && myform.password.$invalid" class="ng-hide">
+Please Enter Valid  password</span>
+<span style="color:red" ng-if="myform.password.$error.required && myform.password.$touched && ! myform.password.$dirty && myform.password.$invalid">
+ password required
+</span>
+<br>
+
+<input type="password" placeholder="confirm your password"  ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^\da-zA-Z])(.{8,15})$/" ng-model="confirmpassword" name="confirmpassword" required>
+<br>
+<span style="color:red" ng-show="myform.confirmpassword.$dirty && myform.confirmpassword.$invalid" class="ng-hide">
+Please Enter Valid  password</span>
+<span style="color:red" ng-if="myform.confirmpassword.$error.required && myform.confirmpassword.$touched && ! myform.confirmpassword.$dirty && myform.confirmpassword.$invalid">
+confirmpassword required
+</span>
+<span style="color:#fff" ng-if="confirmpassword == password && myform.confirmpassword.$valid ">
+  password matched</span>
+
+  <span style="color:#fff" ng-if="confirmpassword !== password &&  myform.confirmpassword.$valid">
+    password mismatched</span>
+<br>
+
+<input type="text" required maxlength="10" ng-pattern="/^[7-9][0-9]{9}$/" name="mobileno" ng-model="mobileno" id="demo" placeholder="enter your phonenumber" required>
+<br>
+<span style="color:red" ng-if="myform.mobileno.$error.required && myform.mobileno.$touched && ! myform.mobileno.$dirty && myform.mobileno.$invalid">
+ email required
+</span>
+<span style="color:red" ng-show="myform.mobileno.$dirty && myform.mobileno.$invalid" class="ng-hide">
+Please Enter Valid  Mobile No.!</span>
+<br>
+
+<input type="text" placeholder="enter your address"  id="autocomplete" ng-model="address" name="address" required>
+<br>
+<span ng-show="myform.address.$dirty || myform.address.$touched && myform.address.$invalid">
+<span style="color:red" ng-show="myform.address.$error.required"> address required</span></span>
+<br>
+
+<input type="radio" name="gender" value='male' ng-model='gender'>male
+<input type="radio" name="gender" value='female' ng-model='gender'>female
+<br>
+<span ng-if="gender!= 'male'&&gender!='female'" style="color:red" ng-class="ng-hide">Please select gender</span>
+<br>
+
+<center><button type="button" ng-disabled="myform.name.$dirty && myform.name.$invalid ||
+  myform.email.$dirty && myform.email.$invalid || myform.mobileno.$dirty && myform.mobileno.$invalid || myform.password.$dirty && myform.password.$invalid ||myform.confirmpassword.$dirty && myform.confirmpassword.$invalid" ng-click="submit()">Signup</button></center>
+</form>
+  </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="./build/js/intlTelInput.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=en"></script>
+<script>
+     var input = document.getElementById('autocomplete');
+     var autocomplete = new google.maps.places.Autocomplete(input);
+     $("#demo").intlTelInput();
+   </script>
+</body>
+</html>

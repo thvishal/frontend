@@ -1,0 +1,39 @@
+body{
+  background-color:green;
+}
+.panel {
+    height:600px;
+    width: 400px;
+    border: 1px solid black;
+    margin: auto;
+    background-color:grey;
+    margin-top:40px;
+}
+
+form.myform {
+    margin:20px 32px;
+}
+input[type="password"] {
+  height: 37px;
+  width: 330px;
+}
+input[type="email"] {
+  height: 37px;
+  width: 330px;
+}
+input[type="text"] {
+  height: 37px;
+  width: 330px;
+}
+#demo {
+  height: 37px;
+  width: 330px;
+}
+input[type="radio"] {
+    height: 30px;
+    width: 22px;
+}
+button {
+    height: 36px;
+    width: 106px;
+}
