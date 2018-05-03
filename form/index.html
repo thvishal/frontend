@@ -64,7 +64,7 @@ confirmpassword required
 <input type="text" required maxlength="10" ng-pattern="/^[7-9][0-9]{9}$/" name="mobileno" ng-model="mobileno" id="demo" placeholder="enter your phonenumber" required>
 <br>
 <span style="color:red" ng-if="myform.mobileno.$error.required && myform.mobileno.$touched && ! myform.mobileno.$dirty && myform.mobileno.$invalid">
- email required
+ phonenumber required
 </span>
 <span style="color:red" ng-show="myform.mobileno.$dirty && myform.mobileno.$invalid" class="ng-hide">
 Please Enter Valid  Mobile No.!</span>
@@ -73,13 +73,12 @@ Please Enter Valid  Mobile No.!</span>
 <input type="text" placeholder="enter your address"  id="autocomplete" ng-model="address" name="address" required>
 <br>
 <span ng-show="myform.address.$dirty || myform.address.$touched && myform.address.$invalid">
-<span style="color:red" ng-show="myform.address.$error.required"> address required</span></span>
+<span style="color:red" ng-show="myform.address.$error.required" class="ng-hide"> address required</span></span>
 <br>
-
-<input type="radio" name="gender" value='male' ng-model='gender'>male
+<input type="radio" name="gender" value='male' ng-model='gender' ng-checked="true">male
 <input type="radio" name="gender" value='female' ng-model='gender'>female
 <br>
-<span ng-if="gender!= 'male'&&gender!='female'" style="color:red" ng-class="ng-hide">Please select gender</span>
+<!-- <span ng-if="gender!= 'male' || gender!='female'" style="color:red" ng-class="ng-hide">Please select gender</span> -->
 <br>
 
 <center><button type="button" ng-disabled="myform.name.$dirty && myform.name.$invalid ||
